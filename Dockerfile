@@ -41,8 +41,8 @@ RUN android list sdk --all
 
 # Accept license - check this out http://d.android.com/r/studio-ui/export-licenses.html
 RUN mkdir "$ANDROID_HOME/licenses" || true
-RUN echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-RUN echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+RUN echo "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+RUN echo "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 
 # Clean up
 RUN apt-get clean
