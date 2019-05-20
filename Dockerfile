@@ -14,9 +14,9 @@ RUN mkdir /opt/android-sdk
 RUN cd /opt/android-sdk
 
 # Download the SDK
-RUN wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
-RUN unzip tools_r25.2.3-linux.zip -d /opt/android-sdk
-RUN rm -rf tools_r25.2.3-linux.zip
+RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+RUN unzip sdk-tools-linux-4333796.zip -d /opt/android-sdk
+RUN rm -rf sdk-tools-linux-4333796.zip
 
 # Set  paths and environment variables
 ENV ANDROID_HOME /opt/android-sdk
