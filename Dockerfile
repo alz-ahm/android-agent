@@ -20,7 +20,7 @@ RUN rm -rf sdk-tools-linux-4333796.zip
 
 # Set  paths and environment variables
 ENV ANDROID_HOME /opt/android-sdk
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 
 # Accept license
 RUN yes | sdkmanager --licenses
