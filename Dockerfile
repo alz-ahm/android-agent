@@ -43,7 +43,7 @@ RUN apt-get clean
 RUN chown -R 1000:1000 $ANDROID_HOME
 
 # Share the android SDK using a volume
-VOLUME ["/opt/android-sdk"]
+VOLUME ["/opt/android-sdk", "/root/.gradle"]
 
 # Set current working directory
 RUN mkdir -p /app
