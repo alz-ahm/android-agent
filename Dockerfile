@@ -22,27 +22,19 @@ RUN rm -rf sdk-tools-linux-4333796.zip
 ENV ANDROID_HOME /opt/android-sdk
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
-# Install platform tools
-RUN echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed'
+# Accept license
+RUN yes | sdkmanager --licenses
+
+# platform tools
+RUN sdkmanager emulator tools platform-tools
 
 # Install SDKs - Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter android-25 | grep 'package installed'
-
-# Install build tools - Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.2 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.1 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.0 | grep 'package installed'
-
-# ALTERNATIVELY you can install everything like this
-# RUN echo y | android update sdk --no-ui | grep 'package installed'
-
-# List everything installed
-RUN android list sdk --all
-
-# Accept license - check this out http://d.android.com/r/studio-ui/export-licenses.html
-RUN mkdir "$ANDROID_HOME/licenses" || true
-RUN echo "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-RUN echo "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+RUN yes | sdkmanager "platforms;android-28"
+RUN yes | sdkmanager "build-tools;28.0.3"
+RUN yes | sdkmanager "build-tools;28.0.2"
+RUN yes | sdkmanager "build-tools;28.0.1"
+RUN yes | sdkmanager "build-tools;28.0.0"
+RUN yes | sdkmanager "system-images;android-28;google_apis;x86"
 
 # Clean up
 RUN apt-get clean
