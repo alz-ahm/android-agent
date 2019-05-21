@@ -7,7 +7,6 @@ RUN apt-get install -y openjdk-8-jdk \
   expect \
   zip \
   unzip
-RUN rm -rf /var/lib/apt/lists/*
 
 # Create android-sdk directory
 RUN mkdir /opt/android-sdk
@@ -53,6 +52,7 @@ RUN apt-get update -qq
 RUN apt-get install -y google-cloud-sdk
 
 # Clean up
+RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get clean
 
 # Give jenkins access on android home
