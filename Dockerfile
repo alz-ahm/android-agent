@@ -36,6 +36,13 @@ RUN yes | sdkmanager "build-tools;28.0.1"
 RUN yes | sdkmanager "build-tools;28.0.0"
 RUN yes | sdkmanager "system-images;android-28;google_apis;x86"
 
+# Install Google Cloud
+RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+RUN echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" > /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN apt-get update -qq
+RUN apt-get install -y google-cloud-sdk
+
 # Clean up
 RUN apt-get clean
 
