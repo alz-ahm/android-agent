@@ -42,9 +42,6 @@ RUN apt-get clean
 # Give jenkins access on android home
 RUN chown -R 1000:1000 $ANDROID_HOME
 
-# Share the android SDK using a volume
-VOLUME ["/opt/android-sdk", "/root/.gradle", "/root/.android"]
-
 # Set current working directory
 RUN mkdir -p /app
 WORKDIR /app
