@@ -36,7 +36,7 @@ RUN yes | sdkmanager "build-tools;28.0.0"
 RUN yes | sdkmanager "system-images;android-28;google_apis;x86"
 
 # Install Google Cloud
-RUN apt-get install curl \
+RUN apt-get install -y curl \
   gcc \
   python-dev \
   python-setuptools \
